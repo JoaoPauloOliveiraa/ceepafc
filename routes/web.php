@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Hotspot\HotspotHomeController;
+use App\Http\Controllers\Hotspot\HotspotController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Hotspot\DeviceController;
 use App\Http\Controllers\Radius\NasController;
@@ -31,7 +32,7 @@ use App\Http\Controllers\Radius\radusergroupController;
 
 
 
-Route::get('/', [HotspotHomeController::class, 'index']);
+Route::get('/', [HotspotController::class, 'index']);
 
 // Route::prefix('admin')->group(function(){
     
@@ -41,20 +42,23 @@ Route::get('/', [HotspotHomeController::class, 'index']);
 // });
 
 Route::get('/401', [AuthController::class, 'unauthorized'])->name('login');  
-
+Route::get('/hotspot', [HotspotController::class, 'index']);
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
 
 Route::middleware('auth')->group(function(){
-    Route::get('/admin', [HomeController::class, 'index']);
-    Route::post('/auth/logout', [AuthController::class, 'logout']);
-    Route::get('users', [UserController::class, 'getAll']);
-    
-    
+    Route::get('admin', [HomeController::class, 'index']);
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::get('users', [UserController::class, 'getAll']);  
+    Route::get('teachers', [UserController::class, 'getTeachers']);
+    Route::get('students', [UserController::class, 'getStudents']);
+    Route::get('visitors', [UserController::class, 'getVisitors']);
 });
 
-
+// Route::fallback(function(){
+// return view('404');
+// });
 
 
 

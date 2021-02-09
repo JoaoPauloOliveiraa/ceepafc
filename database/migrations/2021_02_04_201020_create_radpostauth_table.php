@@ -18,7 +18,7 @@ class CreateRadpostauthTable extends Migration
             $table->string('user', 64)->default('');
             $table->string('pass', 64)->default('');
             $table->string('reply', 32)->default('');
-            $table->timestamp('date', 6)->default('CURRENT_TIMESTAMP(6)');
+            $table->timestamp('date');
         });
     }
 

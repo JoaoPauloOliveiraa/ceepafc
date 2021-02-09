@@ -1,0 +1,50 @@
+[2021-02-05 19:36:04] laravel.EMERGENCY: Unable to create configured logger. Using emergency logger. {"exception":"[object] (InvalidArgumentException(code: 0): Log [] is not defined. at /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php:192)
+[stacktrace]
+#0 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(118): Illuminate\\Log\\LogManager->resolve()
+#1 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(98): Illuminate\\Log\\LogManager->get()
+#2 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(551): Illuminate\\Log\\LogManager->driver()
+#3 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(241): Illuminate\\Log\\LogManager->error()
+#4 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(404): Illuminate\\Foundation\\Exceptions\\Handler->report()
+#5 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(112): Illuminate\\Foundation\\Http\\Kernel->reportException()
+#6 /home/ubuntu/environment/ceepafc/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#7 /home/ubuntu/environment/ceepafc/server.php(21): require_once('/home/ubuntu/en...')
+#8 {main}
+"} 
+[2021-02-05 19:36:04] laravel.ERROR: The "" directory does not exist. {"exception":"[object] (Symfony\\Component\\Finder\\Exception\\DirectoryNotFoundException(code: 0): The \"\" directory does not exist. at /home/ubuntu/environment/ceepafc/vendor/symfony/finder/Finder.php:589)
+[stacktrace]
+#0 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php(88): Symfony\\Component\\Finder\\Finder->in()
+#1 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php(65): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->getConfigurationFiles()
+#2 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php(39): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->loadConfigurationFiles()
+#3 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->bootstrap()
+#4 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\\Foundation\\Application->bootstrapWith()
+#5 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#6 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#7 /home/ubuntu/environment/ceepafc/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#8 /home/ubuntu/environment/ceepafc/server.php(21): require_once('/home/ubuntu/en...')
+#9 {main}
+"} 
+[2021-02-05 19:36:12] laravel.EMERGENCY: Unable to create configured logger. Using emergency logger. {"exception":"[object] (InvalidArgumentException(code: 0): Log [] is not defined. at /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php:192)
+[stacktrace]
+#0 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(118): Illuminate\\Log\\LogManager->resolve()
+#1 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(98): Illuminate\\Log\\LogManager->get()
+#2 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(551): Illuminate\\Log\\LogManager->driver()
+#3 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(241): Illuminate\\Log\\LogManager->error()
+#4 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(404): Illuminate\\Foundation\\Exceptions\\Handler->report()
+#5 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(112): Illuminate\\Foundation\\Http\\Kernel->reportException()
+#6 /home/ubuntu/environment/ceepafc/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#7 /home/ubuntu/environment/ceepafc/server.php(21): require_once('/home/ubuntu/en...')
+#8 {main}
+"} 
+[2021-02-05 19:36:12] laravel.ERROR: The "" directory does not exist. {"exception":"[object] (Symfony\\Component\\Finder\\Exception\\DirectoryNotFoundException(code: 0): The \"\" directory does not exist. at /home/ubuntu/environment/ceepafc/vendor/symfony/finder/Finder.php:589)
+[stacktrace]
+#0 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php(88): Symfony\\Component\\Finder\\Finder->in()
+#1 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php(65): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->getConfigurationFiles()
+#2 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php(39): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->loadConfigurationFiles()
+#3 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->bootstrap()
+#4 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\\Foundation\\Application->bootstrapWith()
+#5 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#6 /home/ubuntu/environment/ceepafc/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#7 /home/ubuntu/environment/ceepafc/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#8 /home/ubuntu/environment/ceepafc/server.php(21): require_once('/home/ubuntu/en...')
+#9 {main}
+"} 

@@ -1,6 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Auth\Middleware\Authenticate;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Hotspot\HotspotHomeController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Hotspot\DeviceController;
+use App\Http\Controllers\Radius\NasController;
+use App\Http\Controllers\Radius\RadacctController;
+use App\Http\Controllers\Radius\RadcheckController;
+use App\Http\Controllers\Radius\RadgroupcheckController;
+use App\Http\Controllers\Radius\RadgroupreplyController;
+use App\Http\Controllers\Radius\RadpostauthController;
+use App\Http\Controllers\Radius\RadreplyController;
+use App\Http\Controllers\Radius\radusergroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +28,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+
+Route::get('/', [HotspotHomeController::class, 'index']);
+
+// Route::prefix('admin')->group(function(){
+    
+//     Route::get('/', [HomeController::class, 'index'])->middleware('auth');
+
+   
+// });
+
+Route::get('/401', [AuthController::class, 'unauthorized'])->name('login');  
+
+
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+
+Route::middleware('auth')->group(function(){
+    Route::get('/admin', [HomeController::class, 'index']);
+    Route::post('/auth/logout', [AuthController::class, 'logout']);
+    Route::get('users', [UserController::class, 'getAll']);
+    
+    
 });
+
+
+
+
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+ require __DIR__.'/auth.php';

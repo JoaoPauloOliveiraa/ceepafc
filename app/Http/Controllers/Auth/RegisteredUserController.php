@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -19,7 +17,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('hotspot.register');
     }
 
     /**
@@ -35,7 +33,10 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'cpf' => 'required|string|digits:11',
+            'datebirth' => 'required',
             'password' => 'required|string|confirmed|min:8',
+            'terms' => 'required'
         ]);
 
         Auth::login($user = User::create([

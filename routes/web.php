@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Hotspot\HotspotHomeController;
 use App\Http\Controllers\Hotspot\HotspotController;
@@ -44,11 +44,12 @@ Route::get('/', [HotspotController::class, 'index']);
 Route::get('/401', [AuthController::class, 'unauthorized'])->name('login');  
 Route::get('/hotspot', [HotspotController::class, 'index']);
 
-Route::post('login', [AuthController::class, 'login']);
+// Route::post('login', [AuthController::class, 'index']);
+// Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
 
 Route::middleware('auth')->group(function(){
-    Route::get('admin', [HomeController::class, 'index']);
+    Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('users', [UserController::class, 'getAll']);  
     Route::get('teachers', [UserController::class, 'getTeachers']);

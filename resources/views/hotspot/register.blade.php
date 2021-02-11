@@ -33,9 +33,9 @@
             </div>
 
             <div class="mt-4">
-                <x-label for="datebirth" :value="__('Data de Nascimento')" />
+                <x-label for="birthdate" :value="__('Data de Nascimento')" />
 
-                <x-input id="datebirth" class="block mt-1 w-full" type="date" name="datebirth" :value="old('datebirth')" required />
+                <x-input id="birthdate" class="block mt-1 w-full" type="date" name="birthdate" :value="old('birthdate')" required />
             </div>
             <!-- Password -->
             <div class="mt-4">
@@ -58,7 +58,7 @@
 
             <div class="block mt-4">
                 <label for="terms" class="inline-flex items-center">
-                    <input id="terms" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                    <input id="terms" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="terms">
                     <span class="underline ml-2 text-sm text-gray-600"><a href="#">Termos de uso</a></span>
                 </label>
             </div>

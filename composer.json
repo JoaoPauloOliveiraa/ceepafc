@@ -12,8 +12,10 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "jeroennoten/laravel-adminlte": "^3.5",
         "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -55,7 +57,8 @@
             "@php artisan package:discover --ansi"
         ],
         "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+        "@php artisan vendor:publish --provider=\"JeroenNoten\\LaravelAdminLte\\ServiceProvider\" --tag=assets"
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"

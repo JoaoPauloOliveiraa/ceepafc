@@ -48,24 +48,23 @@ Route::get('/hotspot', [HotspotController::class, 'index']);
 // Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
 
-Route::middleware('auth')->group(function(){
-    Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
-    Route::post('logout', [AuthController::class, 'logout']);
-    Route::get('users', [UserController::class, 'getAll']);  
-    Route::get('teachers', [UserController::class, 'getTeachers']);
-    Route::get('students', [UserController::class, 'getStudents']);
-    Route::get('visitors', [UserController::class, 'getVisitors']);
-});
-
-// Route::fallback(function(){
-// return view('404');
+// Route::middleware('auth')->group(function(){
+//     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
+//     Route::post('logout', [AuthController::class, 'logout']);
+//     Route::get('users', [UserController::class, 'getAll']);  
+//     Route::get('teachers', [UserController::class, 'getTeachers']);
+//     Route::get('students', [UserController::class, 'getStudents']);
+//     Route::get('visitors', [UserController::class, 'getVisitors']);
 // });
 
+require __DIR__.'/auth.php';
 
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+Auth::routes();
 
- require __DIR__.'/auth.php';
+Route::get('/home', function() {
+    return view('home');
+})->name('home')->middleware('auth');

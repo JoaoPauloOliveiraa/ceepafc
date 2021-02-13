@@ -29,7 +29,7 @@ use App\Http\Controllers\Radius\radusergroupController;
 |
 */
 
-
+require __DIR__.'/auth.php';
 
 
 Route::get('/', [HotspotController::class, 'index']);
@@ -41,30 +41,29 @@ Route::get('/', [HotspotController::class, 'index']);
    
 // });
 
-Route::get('/401', [AuthController::class, 'unauthorized'])->name('login');  
+// Route::get('/401', [AuthController::class, 'unauthorized'])->name('login');  
 Route::get('/hotspot', [HotspotController::class, 'index']);
 
 // Route::post('login', [AuthController::class, 'index']);
 // Route::post('login', [AuthController::class, 'login']);
-Route::post('register', [AuthController::class, 'register']);
 
-// Route::middleware('auth')->group(function(){
-//     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
-//     Route::post('logout', [AuthController::class, 'logout']);
-//     Route::get('users', [UserController::class, 'getAll']);  
-//     Route::get('teachers', [UserController::class, 'getTeachers']);
-//     Route::get('students', [UserController::class, 'getStudents']);
-//     Route::get('visitors', [UserController::class, 'getVisitors']);
-// });
+Route::middleware('auth')->group(function(){
+    Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
+   
+    Route::get('users', [UserController::class, 'getAll']);  
+    Route::get('teachers', [UserController::class, 'getTeachers']);
+    Route::get('students', [UserController::class, 'getStudents']);
+    Route::get('visitors', [UserController::class, 'getVisitors']);
+});
 
-require __DIR__.'/auth.php';
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Auth::routes();
 
-Auth::routes();
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home', function() {
-    return view('home');
-})->name('home')->middleware('auth');
+// Auth::routes();
+
+// Route::get('/home', function() {
+//     return view('home');
+// })->name('home')->middleware('auth');

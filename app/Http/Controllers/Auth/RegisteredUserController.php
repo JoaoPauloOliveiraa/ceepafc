@@ -15,7 +15,7 @@ class RegisteredUserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function index()
     {
         return view('hotspot.register');
     }
@@ -28,25 +28,34 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'cpf' => 'required|string|digits:11',
-            'datebirth' => 'required',
-            'password' => 'required|string|confirmed|min:8',
-            'terms' => 'required'
-        ]);
-
-        Auth::login($user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]));
-
-        event(new Registered($user));
-
-        return redirect(RouteServiceProvider::HOME);
-    }
-}
+    public function register(Request $request)
+        {
+            
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:user',
+                'cpf' => 'required|string|digits:11',
+                'birthdate' => 'required|date',
+                'password' => 'required|string|confirmed|min:8',
+                ]);
+            
+            
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'cpf' => $request->cpf,
+                'birth_date' =>$request->birthdate,
+                'password' => Hash::make($request->password),
+            ]);
+            
+            
+             
+            if($user){
+                return redirect (route('login'))->with('success', trans('Usuario criado com sucesso'));
+            }
+            else{
+                return redirect(route('404'));
+            }
+        
+        }
+}   

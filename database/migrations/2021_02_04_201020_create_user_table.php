@@ -19,8 +19,9 @@ class CreateUserTable extends Migration
             $table->string('cpf', 13)->unique('cpf');
             $table->string('email', 100)->unique('email');
             $table->string('password', 100);
-            $table->date('birth_date')->nullable();
-            $table->boolean('admin')->nullable()->default(0);
+            $table->date('birth_date');
+            $table->boolean('admin')->default(0);
+            $table->boolean('root')->default(0);
         });
     }
 

@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered no-footer table-hover">
+                        <table class="table table-responsive table-bordered no-footer table-hover">
                             <thead class="thead">
                                 <tr role="row">
                                     <th class="sorting_asc"  rowspan="1" colspan="1" aria-sort="ascending" style="width: 370px;">Nome</th>

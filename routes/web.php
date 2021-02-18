@@ -46,6 +46,8 @@ Route::get('/hotspot', [HotspotController::class, 'index']);
 
 // Route::post('login', [AuthController::class, 'index']);
 // Route::post('login', [AuthController::class, 'login']);
+Route::get('/admins', [UserController::class, 'showAdmins'])->middleware('auth')->name('admins');
+Route::get('/remove', [UserController::class, 'remove'])->middleware('auth')->name('remove');
 
 Route::middleware('auth')->group(function(){
     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');

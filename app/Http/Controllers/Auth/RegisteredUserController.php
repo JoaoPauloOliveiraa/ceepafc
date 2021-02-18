@@ -39,16 +39,13 @@ class RegisteredUserController extends Controller
                 'password' => 'required|string|confirmed|min:8',
                 ]);
             
-            
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'cpf' => $request->cpf,
-                'birth_date' =>$request->birthdate,
+                'birth_date' => $request->birthdate,
                 'password' => Hash::make($request->password),
             ]);
-            
-            
              
             if($user){
                 return redirect (route('login'))->with('success', trans('Usuario criado com sucesso'));

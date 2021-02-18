@@ -49,8 +49,9 @@ Route::get('/hotspot', [HotspotController::class, 'index']);
 
 Route::middleware('auth')->group(function(){
     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
-   
-    Route::get('users', [UserController::class, 'getAll']);  
+    Route::get('users', [UserController::class, 'index']);
+    Route::get('users/block/{id}', [UserController::class, 'block'])->name('block');
+    Route::get('user/historic/{id}', [UserController::class, 'historic'])->name('historic');
     Route::get('teachers', [UserController::class, 'getTeachers']);
     Route::get('students', [UserController::class, 'getStudents']);
     Route::get('visitors', [UserController::class, 'getVisitors']);

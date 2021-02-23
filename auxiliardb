@@ -1,0 +1,131 @@
+ desc devices;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| id           | int(11)      | NO   | PRI | NULL    | auto_increment |
+| user_id      | int(11)      | NO   | MUL | NULL    |                |
+| description  | varchar(255) | YES  |     | NULL    |                |
+| mac          | varchar(255) | YES  |     | NULL    |                |
+| status       | int(11)      | YES  |     | NULL    |                |
+| mailnotified | int(11)      | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+
+ desc user;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name       | varchar(100) | NO   |     | NULL    |                |
+| cpf        | varchar(13)  | NO   | UNI | NULL    |                |
+| email      | varchar(100) | NO   | UNI | NULL    |                |
+| password   | varchar(100) | NO   |     | NULL    |                |
+| birth_date | date         | NO   |     | NULL    |                |
+| admin      | tinyint(1)   | NO   |     | 0       |                |
+| root       | tinyint(1)   | NO   |     | 0       |                |
+| block      | tinyint(1)   | NO   |     | 0       |                |
+| created_at | timestamp    | YES  |     | NULL    |                |
+| updated_at | timestamp    | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+
+desc radgroupcheck;
++-----------+------------------+------+-----+---------+----------------+
+| Field     | Type             | Null | Key | Default | Extra          |
++-----------+------------------+------+-----+---------+----------------+
+| id        | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| GroupName | varchar(64)      | NO   | MUL |         |                |
+| Attribute | varchar(32)      | NO   |     |         |                |
+| op        | char(2)          | NO   |     | ==      |                |
+| Value     | varchar(253)     | NO   |     |         |                |
++-----------+------------------+------+-----+---------+----------------+
+
+desc radgroupreply;
++-----------+------------------+------+-----+---------+----------------+
+| Field     | Type             | Null | Key | Default | Extra          |
++-----------+------------------+------+-----+---------+----------------+
+| id        | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| GroupName | varchar(64)      | NO   | MUL |         |                |
+| Attribute | varchar(32)      | NO   |     |         |                |
+| op        | char(2)          | NO   |     | =       |                |
+| Value     | varchar(253)     | NO   |     |         |                |
++-----------+------------------+------+-----+---------+----------------+
+
+desc radusergroup;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| UserName  | varchar(64) | NO   | MUL |         |       |
+| GroupName | varchar(64) | NO   |     |         |       |
+| priority  | int(11)     | NO   |     | 1       |       |
++-----------+-------------+------+-----+---------+-------+
+
+ desc radreply;
++-----------+------------------+------+-----+---------+----------------+
+| Field     | Type             | Null | Key | Default | Extra          |
++-----------+------------------+------+-----+---------+----------------+
+| id        | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| UserName  | varchar(64)      | NO   | MUL |         |                |
+| Attribute | varchar(32)      | NO   |     |         |                |
+| op        | char(2)          | NO   |     | =       |                |
+| Value     | varchar(253)     | NO   |     |         |                |
++-----------+------------------+------+-----+---------+----------------+
+
+desc radacct;
++--------------------+-------------+------+-----+---------+----------------+
+| Field              | Type        | Null | Key | Default | Extra          |
++--------------------+-------------+------+-----+---------+----------------+
+| RadAcctId          | bigint(20)  | NO   | PRI | NULL    | auto_increment |
+| AcctSessionId      | varchar(32) | NO   | MUL |         |                |
+| AcctUniqueId       | varchar(32) | NO   | MUL |         |                |
+| UserName           | varchar(64) | NO   | MUL |         |                |
+| Realm              | varchar(64) | YES  |     |         |                |
+| NASIPAddress       | varchar(15) | NO   | MUL |         |                |
+| NASPortId          | varchar(15) | YES  |     | NULL    |                |
+| NASPortType        | varchar(32) | YES  |     | NULL    |                |
+| AcctStartTime      | datetime    | NO   | MUL | NULL    |                |
+| AcctStopTime       | datetime    | NO   | MUL | NULL    |                |
+| AcctSessionTime    | int(11)     | YES  |     | NULL    |                |
+| AcctAuthentic      | varchar(32) | YES  |     | NULL    |                |
+| ConnectInfo_start  | varchar(50) | YES  |     | NULL    |                |
+| ConnectInfo_stop   | varchar(50) | YES  |     | NULL    |                |
+| AcctInputOctets    | bigint(20)  | YES  |     | NULL    |                |
+| AcctOutputOctets   | bigint(20)  | YES  |     | NULL    |                |
+| CalledStationId    | varchar(50) | NO   |     |         |                |
+| CallingStationId   | varchar(50) | NO   |     |         |                |
+| AcctTerminateCause | varchar(32) | NO   |     |         |                |
+| ServiceType        | varchar(32) | YES  |     | NULL    |                |
+| FramedProtocol     | varchar(32) | YES  |     | NULL    |                |
+| FramedIPAddress    | varchar(15) | NO   | MUL |         |                |
+| AcctStartDelay     | int(11)     | YES  |     | NULL    |                |
+| AcctStopDelay      | int(11)     | YES  |     | NULL    |                |
++--------------------+-------------+------+-----+---------+----------------+
+
+ desc radcheck;
++-----------+------------------+------+-----+---------+----------------+
+| Field     | Type             | Null | Key | Default | Extra          |
++-----------+------------------+------+-----+---------+----------------+
+| id        | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| user_id   | int(11)          | NO   | UNI | NULL    |                |
+| UserName  | varchar(64)      | NO   | MUL |         |                |
+| Attribute | varchar(32)      | NO   |     |         |                |
+| op        | char(2)          | NO   |     | ==      |                |
+| Value     | varchar(253)     | NO   |     |         |                |
++-----------+------------------+------+-----+---------+----------------+
+
++------------------+
+| Tables_in_radius |
++------------------+
+| devices          |
+| migrations       |
+| nas              |
+| password_resets  |
+| radacct          |
+| radcheck         |
+| radgroupcheck    |
+| radgroupreply    |
+| radpostauth      |
+| radreply         |
+| radusergroup     |
+| user             |
+| users_token      |
++------------------+
+

@@ -11,7 +11,11 @@ use Carbon\Carbon as Carbon;
 class UserController extends Controller
 {
     public function index(){
-        $users = User::where('block', 0)->get();
+        $users = User::where(function($query) {
+                $query->where('root', 0)
+                      ->where('block', 0);
+            })->get();
+        
         return view('admin.users.index', [
             'users' => $users
         ]);
@@ -30,9 +34,15 @@ class UserController extends Controller
     
     public function show($id){
         $user = User::where('id', $id)->get()->first();
-        return view('admin.users.details', [
-            'user' => $user
-        ]);
+        
+        
+            if(!$user->root){
+            return view('admin.users.details', [
+                'user' => $user
+            ]);
+        }else{
+             return redirect('users')->with('notblock', 'Não é possivel ver detalhes de '. $user->name);
+        }
     }
     
     public function showBlockeds(){
@@ -45,14 +55,22 @@ class UserController extends Controller
     public function block($id){
         
         $user = User::find($id);
-        if($user->block == 0){
-        $user->block = 1;
-        $user->save();
-         return redirect('users')->with('blocked', 'Usuário blockeado!');
+        
+        
+        
+        if(!$user->block){
+            if(!$user->root){
+                $user->block = 1;
+                $user->save();
+                return redirect('users')->with('blocked', 'Usuário blockeado!');
+            }else{
+                return redirect('users')->with('notblock', 'Não é possivel bloquear o usuário '. $user->name);
+            }
         }
+        else{
         $user->block = 0;
         $user->save();
         return redirect('users')->with('unblocked', 'Usuário desbloqueado com sucesso!');
+        }
     }
-    
 }

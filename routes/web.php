@@ -32,7 +32,7 @@ use App\Http\Controllers\Radius\radusergroupController;
 require __DIR__.'/auth.php';
 
 
-Route::get('/', [HotspotController::class, 'index']);
+Route::get('/', [HotspotController::class, 'index'])->middleware('guest');
 
 // Route::prefix('admin')->group(function(){
     

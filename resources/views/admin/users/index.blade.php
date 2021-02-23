@@ -17,6 +17,12 @@
                 </div>
             @endif
             
+            @if (session('notblock'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('notblock') }}
+                </div>
+            @endif
+            
             @if (session('unblocked'))
                 <div class="alert alert-success" role="alert">
                     {{ session('unblocked') }}

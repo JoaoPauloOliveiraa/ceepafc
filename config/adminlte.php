@@ -232,15 +232,12 @@ return [
          [
             'text' => 'Administradores',
             'url' => 'admins',
+            'can' => 'restrictRoot',
         ],
         [
             'header' => 'Hotspot'
         ],
-        [
-            'text' => 'Routerboards',
-            'url'  => 'nas',
-            'icon' => 'fas fa-fw fa-user',
-        ],
+        
         [
             'text' => 'Usuários',
             'url'  => 'users',
@@ -250,13 +247,18 @@ return [
             'text' => 'groups',
             'url'  => 'groups',
             'icon' => 'fas fa-fw fa-lock',
+             'can' => 'restrictRoot',
         ],
         [
             'text' => 'Usuários Bloqueados',
             'url'  => 'users/blockeds',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        
+        [
+            'text' => 'Routerboards',
+            'url'  => 'nas',
+            'icon' => 'fas fa-fw fa-user',
+        ],
         [
             'header' => 'account_settings'
         ],
@@ -264,11 +266,13 @@ return [
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
+            'can' => 'restrictRoot',
         ],
         [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
+             'can' => 'restrictRoot',
         ],
     ],
     /*

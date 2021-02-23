@@ -48,7 +48,7 @@ class RegisteredUserController extends Controller
             ]);
              
             if($user){
-                return redirect (route('login'))->with('success', trans('Usuario criado com sucesso'));
+                return redirect (route('login'))->with('success', 'Usuario cadastrado com sucesso');
             }
             else{
                 return redirect(route('404'));

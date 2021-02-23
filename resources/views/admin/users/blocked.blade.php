@@ -1,4 +1,4 @@
-    @extends('adminlte::page')
+ @extends('adminlte::page')
     
     @section('title', 'CEEPAFC')
     
@@ -22,10 +22,10 @@
                     {{ session('unblocked') }}
                 </div>
             @endif
-            
+        <div class="container-fluid">
             <div class="fade-in">
                 <div class="card">
-                    <div class="card-header"> <h1 class="m-0 text-dark font-weight-bold">Usuários do HotSpot</h1>
+                    <div class="card-header"> <h1 class="m-0 text-dark font-weight-bold">Usuários bloqueados</h1>
                         <div class="card-header-actions">
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                                         <td>{{$user->conection}}</td>
                                         <td>
                                             <a href="{{route('historic', ['id' => $user->id] )}}" class="btn btn-sm btn-info">Histórico</a>
-                                            <a href="{{route('block', ['id' => $user->id])}}" class="btn btn-sm btn-danger">Bloquear</a>
+                                            <a href="{{route('block', ['id' => $user->id])}}" class="btn btn-sm btn-danger">Desbloquear</a>
                                             <a href="{{route('show', ['id' => $user->id])}}" class="btn btn-sm btn-primary">Detalhes</a>
                                             <a href=""></a>
                                         </td>

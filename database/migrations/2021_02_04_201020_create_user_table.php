@@ -22,6 +22,8 @@ class CreateUserTable extends Migration
             $table->date('birth_date');
             $table->boolean('admin')->default(0);
             $table->boolean('root')->default(0);
+            $table->boolean('block')->default(0);
+            $table->timestamps();
         });
     }
 

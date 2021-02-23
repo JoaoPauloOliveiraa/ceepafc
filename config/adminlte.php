@@ -237,6 +237,11 @@ return [
             'header' => 'Hotspot'
         ],
         [
+            'text' => 'Routerboards',
+            'url'  => 'nas',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
             'text' => 'Usuários',
             'url'  => 'users',
             'icon' => 'fas fa-fw fa-user',
@@ -247,8 +252,8 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text' => 'Bloqueados',
-            'url'  => 'blocked',
+            'text' => 'Usuários Bloqueados',
+            'url'  => 'users/blockeds',
             'icon' => 'fas fa-fw fa-lock',
         ],
         

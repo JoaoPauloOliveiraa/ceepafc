@@ -5,3 +5,28 @@
     background-color: #2e4761;
     color: #fff;
 }
+
+#buttonconfirm{
+    display:none;
+}
+
+#nameError{
+    display:none;
+}
+
+#downError{
+    display: none;
+}
+
+#upError{
+    display:none;
+}
+
+#downvelError{
+    display: none;
+}
+
+#upvelError{
+    display:none;
+}
+

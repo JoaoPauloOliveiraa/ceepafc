@@ -51,18 +51,20 @@ Route::get('/remove', [UserController::class, 'remove'])->middleware('auth')->na
 
 Route::middleware('auth')->group(function(){
     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
+    
     Route::get('nas', [NasController::class, 'index'])->name('nas');
     Route::get('nas/register', [NasController::class, 'register'])->name('registerNas');
     Route::post('nas/register', [NasController::class, 'create'])->name('createNas');
     Route::get('nas/register/{id}', [NasController::class, 'remove'])->name('removeNas');
+    
     Route::get('users', [UserController::class, 'index'])->name('users');
     Route::get('users/blockeds', [UserController::class, 'showBlockeds'])->name('blockeds');
     Route::get('users/block/{id}', [UserController::class, 'block'])->name('block');
     Route::get('user/historic/{id}', [UserController::class, 'historic'])->name('historic');
     Route::get('user/show/{id}', [UserController::class, 'show'])->name('show');
-    Route::get('teachers', [UserController::class, 'getTeachers']);
-    Route::get('students', [UserController::class, 'getStudents']);
-    Route::get('visitors', [UserController::class, 'getVisitors']);
+    Route::get('groups', [RadgroupcheckController::class, 'index'])->name('groups');
+    Route::get('groups/register', [RadgroupcheckController::class, 'register'])->name('registerGroup');
+    Route::post('groups/register', [RadgroupcheckController::class, 'create'])->name('createGroup'); 
 });
 
 

@@ -2,11 +2,14 @@
 namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Radcheck;
+use App\Models\Radcheckgroup;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
 
 class RegisteredUserController extends Controller
 {
@@ -39,14 +42,25 @@ class RegisteredUserController extends Controller
                 'password' => 'required|string|confirmed|min:8',
                 ]);
             
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'cpf' => $request->cpf,
-                'birth_date' => $request->birthdate,
-                'password' => Hash::make($request->password),
-            ]);
-             
+            $user = new User;
+            $user -> name = $request->name;
+            $user -> email = $request->email;
+            $user -> cpf = $request->cpf;
+            $user -> birth_date = $request->birthdate;
+            $user -> password = Hash::make($request->password);
+            $radcheck = new Radcheck;
+            $radcheck -> user_id = $request->email;
+            $radcheck -> UserName = $request->cpf;
+            $radcheck -> Attribute = "SHA2-Password";
+            $radcheck -> Value = hash('sha256', $request->password);
+            
+            if($user && $radcheck){ 
+            $user -> Save();
+            $radcheck -> Save();
+            
+            }
+            
+            
             if($user){
                 return redirect (route('login'))->with('success', 'Usuario cadastrado com sucesso');
             }

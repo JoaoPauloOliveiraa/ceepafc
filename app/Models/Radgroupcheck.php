@@ -11,6 +11,5 @@ class Radgroupcheck extends Model
     protected $table = 'radgroupcheck';
     public $timestamps = false;
     use HasFactory;
- 
   
 }

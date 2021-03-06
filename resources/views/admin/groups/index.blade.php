@@ -34,37 +34,27 @@
                             <thead class="thead">
                                 <tr role="row">
                                     <th>Nome</th>
-                                
                                     <th>Velocidade de Download</th>
-                                    
                                     <th>Velocidade de Upload</th>
+                                    <th>Ação</th>
                                     
                                 </tr>
                             </thead>
                             
                             <tbody>
                                 
-                               
-                                
-                                @foreach($groups as $group)
+                                @foreach($groups as $key => $group)
                                 <tr>
-                                <td>{{$group->GroupName}}</td>
-                                <td>{{$group->value["download"]}}</td>
-                                <td>{{$group->value["upload"]}}</td>
+                                    <td>{{$group->GroupName}}</td>
+                                    <td>{{$group->value["download"]}}</td>
+                                    <td>{{$group->value["upload"]}}</td>
+                                    <td class="text-center">
+                                        <a href="{{route(('editGroup'), ['id' => $group->id])}}" class="btn btn-sm col-md-10 btn-primary">Editar</a>
+                                        <a href=""></a>
+                                    </td>
                                 </tr>
                                 @endforeach
-                                
-                                
-                               
                                         
-                                        {{-- <td>
-                                            <a href="{{route('removeNas', ['id' => $rb->id])}}" class="btn btn-sm btn-danger">Excluir</a>
-                                            <a href=""></a>
-                                        </td>--}}
-                                
-                              
-                               
-                                
                             </tbody>
                         </table>
                     </div>

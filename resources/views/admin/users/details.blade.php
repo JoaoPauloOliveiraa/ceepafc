@@ -10,7 +10,7 @@
     
      @section('content')
     <main class="c-main">
-        <div class="container-fluid col-4">
+        <div class="container-fluid col-6">
             <div class="fade-in">
                 <div class="card">
                     <div class="card-header"> <h1 class="m-0 text-dark font-weight-bold">Detalhes</h1>
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered  table-hover">
+                        <table class="table table-bordered table-responsive table-hover">
                              <tbody>
                                 <tr>
                                     <th style="">Nome:</th>

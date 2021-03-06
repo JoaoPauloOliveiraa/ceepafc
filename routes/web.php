@@ -62,9 +62,11 @@ Route::middleware('auth')->group(function(){
     Route::get('users/block/{id}', [UserController::class, 'block'])->name('block');
     Route::get('user/historic/{id}', [UserController::class, 'historic'])->name('historic');
     Route::get('user/show/{id}', [UserController::class, 'show'])->name('show');
-    Route::get('groups', [RadgroupcheckController::class, 'index'])->name('groups');
-    Route::get('groups/register', [RadgroupcheckController::class, 'register'])->name('registerGroup');
-    Route::post('groups/register', [RadgroupcheckController::class, 'create'])->name('createGroup'); 
+    Route::get('groups', [RadgroupreplyController::class, 'index'])->name('groups');
+    Route::get('groups/register', [RadgroupreplyController::class, 'register'])->name('registerGroup');
+    Route::post('groups/register', [RadgroupreplyController::class, 'create'])->name('createGroup');
+    Route::get('groups/edit/{id}', [RadgroupreplyController::class, 'edit'])->name('editGroup');
+    Route::put('groups/update', [RadgroupreplyController::class, 'update'])->name('updateGroup');
 });
 
 

@@ -6,7 +6,11 @@
     color: #fff;
 }
 
-#buttonconfirm{
+.select{
+     margin-left: 10px;   
+}
+
+#buttonconfirm {
     display:none;
 }
 
@@ -18,7 +22,7 @@
     display: none;
 }
 
-#upError{
+#upError {
     display:none;
 }
 
@@ -26,7 +30,27 @@
     display: none;
 }
 
-#upvelError{
+#upvelError {
+    display:none;
+}
+
+#buttonconfirmEdit {
+    display:none;
+}
+
+#downErrorEdit{
+    display: none;
+}
+
+#upErrorEdit{
+    display:none;
+}
+
+#downvelErrorEdit{
+    display: none;
+}
+
+#upvelErrorEdit{
     display:none;
 }
 

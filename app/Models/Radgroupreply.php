@@ -13,12 +13,7 @@ class Radgroupreply extends Model
     
     public function getValueAttribute()
     {
-        
-        
         $values = explode("/",$this->attributes["Value"]);
-        
-        
-        
         
         if(str_contains($values[0], "M")){
            $value["download"] = str_replace("M", " Megabits", $values[0]);
@@ -37,17 +32,18 @@ class Radgroupreply extends Model
             $value["upload"] = str_replace("K", " Kilobits", $values[1]);
            
         }
-        
        return $value;
-        
-        // return $downup;
-        //dd($value);
+    }
+    public function getVelocidadeAttribute(){
+         $velocidades = explode("/",$this->attributes["Value"]);
+         
+         $velocidade["download"] = preg_replace("[M|K]","",$velocidades[0]);
+         $velocidade["upload"] = preg_replace("[M|K]","",$velocidades[1]);
+        //  $velocidade["download"] = intval($velocidade["download"]);
+        //  $velocidade["upload"] = intval($velocidade["upload"]);
+        //  dd($velocidade["download"]);
+         
+        return $velocidade;
     }
     
-    public function setNameAttribute($name){
-        
-        $this->attributes["GroupName"] = $name;
-        dd($this->attributes["GroupName"]);
-        
-    }
-}
+  }

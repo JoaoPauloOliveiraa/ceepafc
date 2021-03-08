@@ -14,7 +14,7 @@ class AddForeignKeysToUsersTokenTable extends Migration
     public function up()
     {
         Schema::table('users_token', function (Blueprint $table) {
-            $table->foreign('fk_id_user', 'fk_id_user')->references('id')->on('user')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+            $table->foreign('users_token_id')->references('id')->on('user')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -26,7 +26,7 @@ class AddForeignKeysToUsersTokenTable extends Migration
     public function down()
     {
         Schema::table('users_token', function (Blueprint $table) {
-            $table->dropForeign('fk_id_user');
+            $table->dropForeign('users_token_id');
         });
     }
 }

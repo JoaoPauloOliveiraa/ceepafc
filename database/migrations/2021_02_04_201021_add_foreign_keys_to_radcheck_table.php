@@ -14,7 +14,7 @@ class AddForeignKeysToRadcheckTable extends Migration
     public function up()
     {
         Schema::table('radcheck', function (Blueprint $table) {
-            $table->foreign('user_id', 'fk_user_id')->references('id')->on('user')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+            $table->foreign('user_id')->references('id')->on('user')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -26,7 +26,7 @@ class AddForeignKeysToRadcheckTable extends Migration
     public function down()
     {
         Schema::table('radcheck', function (Blueprint $table) {
-            $table->dropForeign('fk_user_id');
+            $table->dropForeign('user_id');
         });
     }
 }

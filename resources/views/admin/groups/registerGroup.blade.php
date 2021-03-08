@@ -2,18 +2,17 @@
     
     @section('title', 'CEEPAFC')
     
-    @section('title_prefix', 'Adicionar RB - ')
+    @section('title_prefix', 'Criar Grupo RB - ')
     @section('css')
     <link href="/css/custom.css" rel="stylesheet">
     @stop
-    
         
     @section('content')
     <main class="c-main">
         <div class="container col-sm-6">
             <div class="fade-in">
                 <div class="card">
-                    <div class="card-header"> <h1 class="m-0 text-dark font-weight-bold">Criar Grupo</h1>
+                    <div class="card-header" onload="showButton"> <h1 class="m-0 text-dark font-weight-bold">Criar Grupo</h1>
                         <div class="card-header-actions">
                         </div>
                     </div>
@@ -82,16 +81,21 @@
                         </div>
                         
                         <noscript>
-                            <button type="submit" class="btn btn-block btn-primary">
+                            <button type="submit" class="btn btn-sm btn-primary">
                                 <span class="">Cadastrar</span>
                             </button>
+                            
+                             <a href="{{route('groups')}}" class="btn btn-sm btn-secondary">Voltar</a>
                         </noscript>
                         
-                            
-                            <button type="button" class="btn btn-block btn-primary" onclick="validator()" name="buttonconfirm" id="buttonconfirm" data-toggle="modal" data-target="#Confirm">
+                        <div class="row" id="buttonSave">
+                        <div class="col align-self-center">
+                        <a href="{{route('groups')}}" class="btn btn-sm col-sm-3 center mr-sm-2 btn-secondary" >Voltar</a>
+                            <button type="button" class="btn btn-sm col-sm-3 btn-primary" onclick="validator()" name="buttonconfirm" id="buttonconfirm" data-toggle="modal" data-target="#Confirm">
                                 <span class="">Cadastrar</span>
                             </button>
-                        
+                        </div>                        
+                        </div>
                             <div class="modal fade" id="Confirm" tabindex="-1" role="dialog" aria-labelledby="Confirm" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -118,7 +122,7 @@
         </div>
     </main>
     @section('js')
-    <script src="/js/functions.js"></script>
+    <script src="/js/registergroup.js"></script>
     @stop
     @stop
     

@@ -15,7 +15,7 @@ class CreateUsersTokenTable extends Migration
     {
         Schema::create('users_token', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->integer('fk_id_user')->index('fk_id_user');
+            $table->integer('users_token_id')->index('users_token_id');
             $table->string('hash', 32)->nullable();
             $table->boolean('used')->nullable()->default(0);
             $table->dateTime('expired_in');

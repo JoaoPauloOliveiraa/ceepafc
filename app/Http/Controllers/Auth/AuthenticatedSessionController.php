@@ -30,17 +30,18 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         $user = User::where('email', $request->email)->first();
-        if(!$user->admin){
-        $request->authenticate();
+        if($user){
+            if($user->admin){
+            $request->authenticate();
 
-        $request->session()->regenerate();
-        
-        return redirect((RouteServiceProvider::HOME));
-        
-        }
+            $request->session()->regenerate();
+            
+            return redirect((RouteServiceProvider::HOME));
+            }
          return redirect (route('login'))->with('fails', 'Usuário não cadastrado');
         }
-
+        return redirect (route('login'))->with('fails', 'Usuário não cadastrado');
+    }
     /**
      * Destroy an authenticated session.
      *

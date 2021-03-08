@@ -66,7 +66,7 @@ Route::middleware('auth')->group(function(){
     Route::get('groups/register', [RadgroupreplyController::class, 'register'])->name('registerGroup');
     Route::post('groups/register', [RadgroupreplyController::class, 'create'])->name('createGroup');
     Route::get('groups/edit/{id}', [RadgroupreplyController::class, 'edit'])->name('editGroup');
-    Route::put('groups/update', [RadgroupreplyController::class, 'update'])->name('updateGroup');
+    Route::put('groups/update/{id}', [RadgroupreplyController::class, 'update'])->name('updateGroup');
 });
 
 

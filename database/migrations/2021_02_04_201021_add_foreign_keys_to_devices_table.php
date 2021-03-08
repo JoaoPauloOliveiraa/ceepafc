@@ -14,7 +14,7 @@ class AddForeignKeysToDevicesTable extends Migration
     public function up()
     {
         Schema::table('devices', function (Blueprint $table) {
-            $table->foreign('user_id', 'user_id')->references('id')->on('user')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+            $table->foreign('user_devices_id')->references('id')->on('user')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -26,7 +26,7 @@ class AddForeignKeysToDevicesTable extends Migration
     public function down()
     {
         Schema::table('devices', function (Blueprint $table) {
-            $table->dropForeign('user_id');
+            $table->dropForeign('user_devices_id');
         });
     }
 }

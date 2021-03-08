@@ -78,7 +78,6 @@ class RadgroupreplyController extends Controller
             $groupInterval->op = ':=';
             $groupInterval->Value = '300';
             
-
             $groupPrimaryDnsServer = new Radgroupreply;
             $groupPrimaryDnsServer->GroupName = $request->name;
             $groupPrimaryDnsServer->Attribute = 'MS-Primary-DNS-Server';
@@ -90,7 +89,6 @@ class RadgroupreplyController extends Controller
             $groupSecondaryDnsServer->Attribute = 'MS-Secondary-DNS-Server';
             $groupSecondaryDnsServer->op = ':=';
             $groupSecondaryDnsServer->Value = '1.0.0.3';
-            
             
             if($groupNasPortType && $groupDownUp && $groupInterval && $groupPrimaryDnsServer && $groupSecondaryDnsServer){
             $groupNasPortType->save();
@@ -113,7 +111,8 @@ class RadgroupreplyController extends Controller
         
     }
     
-    public function update($id){
+    public function update(Request $request, $id){
+        
         echo "alterando";
     }
     

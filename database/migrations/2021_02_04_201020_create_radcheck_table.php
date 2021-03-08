@@ -21,6 +21,8 @@ class CreateRadcheckTable extends Migration
             $table->char('op', 2)->default('==');
             $table->string('Value', 253)->default('');
         });
+    
+       
     }
 
     /**

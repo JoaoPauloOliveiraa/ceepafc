@@ -48,24 +48,21 @@ class RegisteredUserController extends Controller
             $user -> cpf = $request->cpf;
             $user -> birth_date = $request->birthdate;
             $user -> password = Hash::make($request->password);
+            $user -> Save();
+            
+            $userId = User::where('email', $request->email)->first();
+            if($userId->id){
+
             $radcheck = new Radcheck;
-            $radcheck -> user_id = $request->email;
+            $radcheck -> user_id = $userId->id;
             $radcheck -> UserName = $request->cpf;
             $radcheck -> Attribute = "SHA2-Password";
-            $radcheck -> Value = hash('sha256', $request->password);
-            
-            if($user && $radcheck){ 
-            $user -> Save();
+            $radcheck -> Value = hash('sha256', $request->password);            
             $radcheck -> Save();
-            
-            }
-            
-            
-            if($user){
-                return redirect (route('login'))->with('success', 'Usuario cadastrado com sucesso');
+            return redirect (route('login'))->with('success', 'Usuario cadastrado com sucesso');
             }
             else{
-                return redirect(route('404'));
+                return redirect (route('register'))->with('fail', 'Não foi possivel cadastrar usuário');
             }
         
         }

@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<strong>CEEPAFC</strong>',
+    'logo' => '<strong></strong>',
     'logo_img' => 'img/logo.png', //'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'CEEPAFC',
+    'logo_img_alt' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -247,7 +247,7 @@ return [
             'text' => 'groups',
             'url'  => 'groups',
             'icon' => 'fas fa-fw fa-lock',
-             'can' => 'restrictRoot',
+            'can' => 'restrictRoot',
         ],
         [
             'text' => 'Usuários Bloqueados',
@@ -272,7 +272,7 @@ return [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
-             'can' => 'restrictRoot',
+            'can' => 'restrictRoot',
         ],
     ],
     /*

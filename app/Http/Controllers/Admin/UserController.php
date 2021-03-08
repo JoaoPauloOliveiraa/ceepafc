@@ -11,6 +11,7 @@ use Carbon\Carbon as Carbon;
 class UserController extends Controller
 {
     public function index(){
+        
         $users = User::where(function($query) {
                 $query->where('root', 0)
                       ->where('block', 0);

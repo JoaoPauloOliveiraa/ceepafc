@@ -10,10 +10,6 @@
      margin-left: 10px;   
 }
 
-#buttonconfirm {
-    display:none;
-}
-
 #nameError{
     display:none;
 }
@@ -34,8 +30,12 @@
     display:none;
 }
 
-#buttonconfirmEdit {
-    display:none;
+#buttonSaveEdit{
+    display: none;
+}
+
+#buttonSave{
+    display: none;
 }
 
 #downErrorEdit{

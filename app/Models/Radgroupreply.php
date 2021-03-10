@@ -12,7 +12,8 @@ class Radgroupreply extends Model
     use HasFactory;
     
     public function getValueAttribute()
-    {
+    {  
+    
         $values = explode("/",$this->attributes["Value"]);
         
         if(str_contains($values[0], "M")){
@@ -33,17 +34,15 @@ class Radgroupreply extends Model
            
         }
        return $value;
-    }
-    public function getVelocidadeAttribute(){
-         $velocidades = explode("/",$this->attributes["Value"]);
-         
-         $velocidade["download"] = preg_replace("[M|K]","",$velocidades[0]);
-         $velocidade["upload"] = preg_replace("[M|K]","",$velocidades[1]);
-        //  $velocidade["download"] = intval($velocidade["download"]);
-        //  $velocidade["upload"] = intval($velocidade["upload"]);
-        //  dd($velocidade["download"]);
-         
-        return $velocidade;
+        
     }
     
-  }
+    public function getVelocidadeAttribute(){
+        $velocidades = $this->attributes["Value"];
+        $velocidades = explode("/", $velocidades);
+        
+        $velocidade["download"] = preg_replace("[M|K]","",$velocidades[0]);
+        $velocidade["upload"] = preg_replace("[M|K]","",$velocidades[1]);
+        return $velocidade;
+    }
+}

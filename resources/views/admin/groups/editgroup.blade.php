@@ -24,7 +24,7 @@
                            
                             <div class="input mb-3">
                             <label>Nome do grupo</label>
-                            <input type="text" name="name"  class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }} " 
+                            <input type="text" name="name"  class="form-control col-6 {{ $errors->has('name') ? 'is-invalid' : '' }} " 
                             value="{{$group->GroupName}}" disabled>
                           
                         </div>
@@ -33,7 +33,7 @@
                             <label>Velocidade de Download</label><br>
                             <div class="form-inline">
                                 <input type="number" min="0" max="999" name="down" id="downEdit" class="form-control col-4 col-md-6 {{ $errors->has('down') ? 'is-invalid' : '' }} " value="{{$group->velocidade["download"]}}" placeholder="Velocidade de Download" autofocus>
-                                <select id="downvelEdit" name="downvel" class="form-control select col-3 {{ $errors->has('downvel') ? 'is-invalid' : '' }} " value="{{''}}">
+                                <select id="downvelEdit" name="downvel" class="form-control select col-3 col-lg-1 {{ $errors->has('downvel') ? 'is-invalid' : '' }} ">
                                     <option value="K">Kbps</option>
                                     <option value="M" selected>Mbps</option>
                                     <p id="downvelErrorEdit" class="text-danger">O campo deve conter o valor Kbps ou Mbps!</p>
@@ -58,7 +58,7 @@
                              <div class="form-inline">
                                 <input type="number"  min="0" max="999" name="up" id="upEdit" class="form-control col-4 col-md-6 {{ $errors->has('up') ? 'is-invalid' : '' }} " value="{{$group->velocidade["upload"]}}" placeholder="Velocidade de Upload" autofocus>
                                 
-                                <select id="upvelEdit" name="upvel" class="form-control select col-3 {{ $errors->has('upvel') ? 'is-invalid' : '' }} " value="{{ old('upvel') }}">
+                                <select id="upvelEdit" name="upvel" class="form-control select col-3 col-lg-1 {{ $errors->has('upvel') ? 'is-invalid' : '' }}">
                                     <option value="K">Kbps</option>
                                     <option value="M" selected>Mbps</option>
                                 </select>
@@ -80,20 +80,23 @@
                         </div>
                         
                         <noscript>
-                            <button type="submit" class="btn btn-sm btn-primary">
-                                <span class="">Salvar</span>
-                            </button>
-                            
-                             <a href="{{route('groups')}}" class="btn btn-sm btn-secondary">Voltar</a>
+                        <div class="row">
+                            <div class="col col-6 col-md-10 align-self-center">
+                            <a href="{{route('groups')}}" class="btn btn-sm col-sm-3 mr-sm-2 btn-secondary" >Voltar</a>
+                                <button type="submit" class="btn btn-sm col-sm-3 btn-primary" onclick="validatorEdit()" name="buttonconfirmEdit" id="buttonconfirmEdit"  data-toggle="modal" data-target="#ConfirmEdit">
+                                    <span class="">Salvar</span>
+                                </button>
+                            </div>                        
+                        </div>
                         </noscript>
                         
                         <div class="row " id="buttonSaveEdit">
-                        <div class="col col-6 col-md-10 align-self-center">
-                        <a href="{{route('groups')}}" class="btn btn-sm col-sm-3 mr-sm-2 btn-secondary" >Voltar</a>
-                            <button type="button" class="btn btn-sm col-sm-3 btn-primary" onclick="validatorEdit()" name="buttonconfirmEdit" id="buttonconfirmEdit"  data-toggle="modal" data-target="#ConfirmEdit">
-                                <span class="">Salvar</span>
-                            </button>
-                        </div>                        
+                            <div class="col col-6 col-md-10 align-self-center">
+                            <a href="{{route('groups')}}" class="btn btn-sm col-sm-3 mr-sm-2 btn-secondary" >Voltar</a>
+                                <button type="button" class="btn btn-sm col-sm-3 btn-primary" onclick="validatorEdit()" name="buttonconfirmEdit" id="buttonconfirmEdit"  data-toggle="modal" data-target="#ConfirmEdit">
+                                    <span class="">Salvar</span>
+                                </button>
+                            </div>                        
                         </div>
                             <div class="modal fade" id="ConfirmEdit" tabindex="-1" role="dialog" aria-labelledby="Confirm" aria-hidden="true">
                                 <div class="modal-dialog" role="document">

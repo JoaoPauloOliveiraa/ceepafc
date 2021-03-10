@@ -98,22 +98,63 @@ class RadgroupreplyController extends Controller
             $groupSecondaryDnsServer->save();
             return redirect(route('groups'))->with('success', 'Grupo cadastrado com sucesso!');
             }
+            
+            return redirect(route('groups'))->with('fail', 'Não foi possivel cadastrar grupo!');
     }
     
     public function edit($id){
-        $group = Radgroupreply::find($id);
         
-        return view('admin.groups.editgroup',[
+        $group = Radgroupreply::where('id', $id)
+        ->where('Attribute', 'Mikrotik-Rate-Limit')->first();
+        
+        if($group){
+            return view('admin.groups.editgroup',[
             
             'group' => $group
             
             ]);
-        
+        }
+            return redirect(route('groups'))->with('fail', 'O grupo não existe!');
     }
     
     public function update(Request $request, $id){
+        $request->validate(
+                [
+                'down' => 'required|max:999|numeric|gt:0',
+                'up'   => 'required|max:999|numeric|gt:0',
+                'downvel' => 'required|in:K,M',
+                'upvel' => 'required|in:K,M',
+                ], 
+                [
+                'down.required' => 'O valor não pode ser em branco!',
+                'down.numeric' => 'Insira um valor válido!',
+                'down.gt' => 'Insira um valora válido!',
+                'down.max' => 'Velocidade de download inválida!',
+                
+                'downvel.in' => 'Valor deve ser em Kbps ou Mbps!',
+                'downvel.required' => 'O Valor deve ser preenchido!',
+                
+                'upvel.in' => 'Valor deve ser em Kbps ou Mbps!',
+                'upvel.required' => 'O Valor deve ser preenchido!',
+                
+                'up.required' => 'O valor não pode ser em branco!',
+                'up.numeric' => 'Insira um valor válido!',
+                'up.gt' => 'Insira um valora válido!',
+                'up.max' => 'Velocidade de upload inválida!',
+                ]);
         
-        echo "alterando";
+        
+        $group = Radgroupreply::where('id', $id)
+        ->where('Attribute', 'Mikrotik-Rate-Limit')->first();
+        
+        if($group){
+            $group->Value = $request->down . $request->downvel .'/' . $request->up . $request->upvel;
+            $group->Save();
+            return redirect(route('groups'))->with('success', 'Grupo atualizado com sucesso!');
+        }
+        
+        return redirect(route('groups'))->with('fail', 'O grupo não existe!');
+        
     }
     
 }

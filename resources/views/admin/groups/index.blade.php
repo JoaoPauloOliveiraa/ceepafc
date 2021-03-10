@@ -2,7 +2,7 @@
     
     @section('title', 'CEEPAFC')
     
-    @section('title_prefix', 'Routerboards - ')
+    @section('title_prefix', 'Grupos - ')
     @section('css')
     <link href="/css/custom.css" rel="stylesheet">
     @stop
@@ -12,9 +12,9 @@
     <main class="c-main">
         
         <div class="container-fluid">
-            @if (session('deleted'))
+            @if (session('fail'))
                 <div class="alert alert-danger" role="alert">
-                    {{ session('deleted') }}
+                    {{ session('fail') }}
                 </div>
             @endif
             

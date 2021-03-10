@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Radius;
 use App\Models\Radgroupcheck;
-use App\Models\Radgroupreply;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

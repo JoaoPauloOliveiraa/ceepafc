@@ -35,18 +35,21 @@ class UserController extends Controller
     
     public function show($id){
         $user = User::where('id', $id)->get()->first();
-        
-        
+        if($user){    
             if(!$user->root){
-            return view('admin.users.details', [
-                'user' => $user
-            ]);
-        }else{
-             return redirect('users')->with('notblock', 'Não é possivel ver detalhes de '. $user->name);
+                return view('admin.users.details', [
+                    'user' => $user
+                ]);
+            }else{
+                return redirect('users')->with('notblock', 'Não é possivel ver detalhes de '. $user->name);
+            }
         }
+
+        return redirect('users')->with('notblock', 'Usuário não encontardo!');
     }
     
     public function showBlockeds(){
+        
         $users = User::where('block', 1)->get();
         return view('admin.users.blocked', [
         'users' => $users

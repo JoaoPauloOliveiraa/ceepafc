@@ -55,7 +55,7 @@
                                         <td>
                                             <a href="{{route('historic', ['id' => $user->id] )}}" class="btn btn-sm btn-info">Histórico</a>
                                             <a href="{{route('block', ['id' => $user->id])}}" class="btn btn-sm btn-danger">Desbloquear</a>
-                                            <a href="{{route('show', ['id' => $user->id])}}" class="btn btn-sm btn-primary">Detalhes</a>
+                                            <a href="{{route('show', ['id' => $user->id])}}" class="btn btn-sm btn-success">Detalhes</a>
                                             <a href=""></a>
                                         </td>
                                     </tr>

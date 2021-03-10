@@ -40,6 +40,15 @@
                                     <th style="">Data de Registro:</th>
                                     <td>{{$user->created_at->formatLocalized('%d/%m/%Y %H:%M')}}</td>
                                 </tr>                   
+                                <tr>
+                                    <th style="">Grupo</th>
+                                    <td>
+                                        <select class="form-control">
+                                            <option value="V">Visitantes</option>
+                                        </select>
+                                    </td>
+                                </tr>
+
                             </tbody>
                         </table>
                     </div>

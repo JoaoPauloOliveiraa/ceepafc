@@ -14,7 +14,7 @@ class Radgroupreply extends Model
     public function getValueAttribute()
     {  
     
-        $values = explode("/",$this->attributes["Value"]);
+        $values = explode("/",$this->attributes["value"]);
         
         if(str_contains($values[0], "M")){
            $value["download"] = str_replace("M", " Megabits", $values[0]);

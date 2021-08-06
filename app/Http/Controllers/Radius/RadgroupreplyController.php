@@ -10,7 +10,7 @@ class RadgroupreplyController extends Controller
 {
     public function index(){
          
-        $groups = Radgroupreply::where('Attribute', 'Mikrotik-Rate-Limit')->get();
+        $groups = Radgroupreply::where('attribute', 'Mikrotik-Rate-Limit')->get();
     
         return view('admin.groups.index',[
             'groups' => $groups
@@ -24,7 +24,7 @@ class RadgroupreplyController extends Controller
     public function create(Request $request){
             $request->validate(
                 [
-                'name' => 'required|regex:/^[a-zA-Z].*/|unique:radgroupcheck,GroupName|max:100',       
+                'name' => 'required|regex:/^[a-zA-Z].*/|unique:radgroupcheck,groupname|max:100',       
                 'down' => 'required|max:999|numeric|gt:0',
                 'up'   => 'required|max:999|numeric|gt:0',
                 'downvel' => 'required|in:K,M',
@@ -54,41 +54,41 @@ class RadgroupreplyController extends Controller
                 ]);
                 
             $groupNasPortType = new Radgroupcheck;
-            $groupNasPortType->GroupName = $request->name;
-            $groupNasPortType->Attribute = 'NAS-Port-Type';
+            $groupNasPortType->groupname = $request->name;
+            $groupNasPortType->attribute = 'NAS-Port-Type';
             $groupNasPortType->op = '==';
-            $groupNasPortType->Value = 'Wireless-802.11';
+            $groupNasPortType->value = 'Wireless-802.11';
             
             /*$groupNasIPAddress = new Radgroupcheck;
-            $groupNasIPAddress->GroupName = $request->name;
-            $groupNasIPAddress->Attribute = 'NAS-IP-Address'; 
+            $groupNasIPAddress->groupname = $request->name;
+            $groupNasIPAddress->attribute = 'NAS-IP-Address'; 
             $groupNasIPAddress->op = '==';
-            $groupNasIPAddress->Value = '192.168.0.1';
+            $groupNasIPAddress->value = '192.168.0.1';
             */
                
             $groupDownUp = new Radgroupreply;
-            $groupDownUp->GroupName = $request->name;
-            $groupDownUp->Attribute = 'Mikrotik-Rate-Limit';
+            $groupDownUp->groupname = $request->name;
+            $groupDownUp->attribute = 'Mikrotik-Rate-Limit';
             $groupDownUp->op = ':=';
-            $groupDownUp->Value = $request->down . $request->downvel .'/' . $request->up . $request->upvel;
+            $groupDownUp->value = $request->down . $request->downvel .'/' . $request->up . $request->upvel;
             
             $groupInterval = new Radgroupreply;
-            $groupInterval->GroupName = $request->name;
-            $groupInterval->Attribute = 'Acct-Interim-Interval';
+            $groupInterval->groupname = $request->name;
+            $groupInterval->attribute = 'Acct-Interim-Interval';
             $groupInterval->op = ':=';
-            $groupInterval->Value = '300';
+            $groupInterval->value = '300';
             
             $groupPrimaryDnsServer = new Radgroupreply;
-            $groupPrimaryDnsServer->GroupName = $request->name;
-            $groupPrimaryDnsServer->Attribute = 'MS-Primary-DNS-Server';
+            $groupPrimaryDnsServer->groupname = $request->name;
+            $groupPrimaryDnsServer->attribute = 'MS-Primary-DNS-Server';
             $groupPrimaryDnsServer->op = ':=';
-            $groupPrimaryDnsServer->Value = '1.1.1.3';
+            $groupPrimaryDnsServer->value = '1.1.1.3';
             
             $groupSecondaryDnsServer = new Radgroupreply;
-            $groupSecondaryDnsServer->GroupName = $request->name;
-            $groupSecondaryDnsServer->Attribute = 'MS-Secondary-DNS-Server';
+            $groupSecondaryDnsServer->groupname = $request->name;
+            $groupSecondaryDnsServer->attribute = 'MS-Secondary-DNS-Server';
             $groupSecondaryDnsServer->op = ':=';
-            $groupSecondaryDnsServer->Value = '1.0.0.3';
+            $groupSecondaryDnsServer->value = '1.0.0.3';
             
             if($groupNasPortType && $groupDownUp && $groupInterval && $groupPrimaryDnsServer && $groupSecondaryDnsServer){
             $groupNasPortType->save();
@@ -105,7 +105,7 @@ class RadgroupreplyController extends Controller
     public function edit($id){
         
         $group = Radgroupreply::where('id', $id)
-        ->where('Attribute', 'Mikrotik-Rate-Limit')->first();
+        ->where('attribute', 'Mikrotik-Rate-Limit')->first();
         
         if($group){
             return view('admin.groups.editgroup',[
@@ -142,13 +142,11 @@ class RadgroupreplyController extends Controller
                 'up.gt' => 'Insira um valora válido!',
                 'up.max' => 'Velocidade de upload inválida!',
                 ]);
-        
-        
         $group = Radgroupreply::where('id', $id)
-        ->where('Attribute', 'Mikrotik-Rate-Limit')->first();
+        ->where('attribute', 'Mikrotik-Rate-Limit')->first();
         
         if($group){
-            $group->Value = $request->down . $request->downvel .'/' . $request->up . $request->upvel;
+            $group->value = $request->down . $request->downvel .'/' . $request->up . $request->upvel;
             $group->Save();
             return redirect(route('groups'))->with('success', 'Grupo atualizado com sucesso!');
         }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRadcheckTable extends Migration
+class CreateRadgroupcheckTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateRadcheckTable extends Migration
      */
     public function up()
     {
-        Schema::create('radcheck', function (Blueprint $table) {
+        Schema::create('radgroupcheck', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unique('user_id');
-            $table->string('UserName', 64)->default('')->index('UserName');
-            $table->string('Attribute', 32)->default('');
+            $table->string('groupname', 64)->default('')->index('groupname');
+            $table->string('attribute', 64)->default('');
             $table->char('op', 2)->default('==');
-            $table->string('Value', 253)->default('');
+            $table->string('value', 253)->default('');
         });
-    
-       
     }
 
     /**
@@ -32,6 +29,6 @@ class CreateRadcheckTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('radcheck');
+        Schema::dropIfExists('radgroupcheck');
     }
 }

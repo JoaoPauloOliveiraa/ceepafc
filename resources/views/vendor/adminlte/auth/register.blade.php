@@ -19,6 +19,7 @@
 
         {{-- Name field --}}
         <div class="input mb-3">
+            <label for="name">Nome</label>
             <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
                    value="{{ old('name') }}" placeholder="{{ __('adminlte::adminlte.full_name') }}" autofocus>
            
@@ -31,6 +32,7 @@
 
         {{-- Email field --}}
         <div class="input mb-3">
+            <label for="email">E-mail</label>
             <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
                    value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}">
            
@@ -42,6 +44,7 @@
         </div>
         
          <div class="input mb-3">
+            <label for="cpf">CPF</label>
             <input type="text" name="cpf"
                    class="form-control {{ $errors->has('cpf') ? 'is-invalid' : '' }}"
                    placeholder="{{ __('adminlte::adminlte.cpf') }}">
@@ -53,9 +56,10 @@
         </div>
 
          <div class="input mb-3">
+             <label for="birthdate">Data de nascimento</label>
             <input type="date" name="birthdate"
                    class="form-control {{ $errors->has('birthdate') ? 'is-invalid' : '' }}"
-                   placeholder="{{ __('adminlte::adminlte.birthdate') }}">
+                   placeholder="Data de nascimento">
             @if($errors->has('birthdate'))
                 <div class="invalid-feedback">
                     <strong>{{ $errors->first('birthdate') }}</strong>
@@ -66,6 +70,7 @@
 
         {{-- Password field --}}
         <div class="input mb-3">
+            <label for="password">Senha</label>
             <input type="password" name="password"
                    class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
                    placeholder="{{ __('adminlte::adminlte.password') }}">
@@ -78,10 +83,11 @@
         </div>
 
         {{-- Confirm password field --}}
+        <label for="password_confirmation">Confirme sua senha</label>
         <div class="input mb-3">
             <input type="password" name="password_confirmation"
                    class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}"
-                   placeholder="{{ __('adminlte::adminlte.retype_password') }}">
+                   placeholder="{{ __('adminlte::adminlte.retype_password')}}">
             @if($errors->has('password_confirmation'))
                 <div class="invalid-feedback">
                     <strong>{{ $errors->first('password_confirmation') }}</strong>
@@ -100,7 +106,7 @@
 
 @section('auth_footer')
     <p class="my-0">
-        <a href="{{ $login_url }}">
+        <a href="http://172.168.0.1">
             {{ __('adminlte::adminlte.i_already_have_a_membership') }}
         </a>
     </p>

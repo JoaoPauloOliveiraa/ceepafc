@@ -11,6 +11,16 @@
     @section('content')
     <main class="c-main">
          <div class="container-fluid">
+            @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+            @endif
+            @if (session('fails'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('fails') }}
+            </div>
+            @endif
             @if (session('blocked'))
                 <div class="alert alert-danger" role="alert">
                     {{ session('blocked') }}
@@ -28,7 +38,7 @@
                     {{ session('unblocked') }}
                 </div>
             @endif
-            
+            @if ($users->count()!=0)
             <div class="fade-in">
                 <div class="card">
                     <div class="card-header"> <h1 class="m-0 text-dark font-weight-bold">Usuários do HotSpot</h1>
@@ -45,7 +55,7 @@
                                 
                                     <th>Status</th>
                                     
-                                    <th>Conexão</th>
+                                    <th>Grupo</th>
                                 
                                     <th>Ações</th>
 
@@ -53,26 +63,45 @@
                             </thead>
                             
                             <tbody>
-                                @foreach($users as $user)
+                                @foreach($users as $user)       
                                     <tr>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td>{{$user->confirmed}}</td>
-                                        <td>{{$user->conection}}</td>
-
+                                        @if ($user->block === 1)
+                                        <td>Bloqueado</td>    
+                                        @else
+                                        <td></td>
+                                        @endif
+                                        @php
+                                        @endphp
+                                        <td>{{$user->group->groupname}}</td>
                                         <td class="text-center">
-                                            <a href="{{route('historic', ['id' => $user->id] )}}" class="btn btn-sm btn-info">Histórico</a>
-                                            <a href="{{route('block', ['id' => $user->id])}}" class="btn btn-sm btn-danger">Bloquear</a>
-                                            <a href="{{route('show', ['id' => $user->id])}}" class="btn btn-sm btn-success">Detalhes</a>
-                                            <a href=""></a>
+                                                <a href="{{route('historic', ['id' => $user->id] )}}" class="btn btn-sm btn-info">Histórico</a>
+                                                @if ($user->block === 1)
+                                                <a href="{{route('block', ['id' => $user->id])}}" class="btn btn-sm btn-danger">Desbloquear</a>
+                                                @else
+                                                <a href="{{route('block', ['id' => $user->id])}}" class="btn btn-sm btn-danger">Bloquear</a>
+                                                @endif
+                                                <a href="{{route('show', ['id' => $user->id])}}" class="btn btn-sm btn-secondary">Detalhes</a>
+                                                <a href="{{route('approve', ['id' => $user->id])}}" class="btn btn-sm btn-success">Alterar Grupo</a>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div>            
             </div>
+            @else
+            <div class="card">
+                <div class="card-header"> <h1 class="m-0 text-dark font-weight-bold">Não existem usuários cadastrados</h1>
+                    <div class="card-header-actions">
+                    </div>
+                </div>
+                
+            </div>            
+            @endif
+            
         </div>
     </main>
     @stop

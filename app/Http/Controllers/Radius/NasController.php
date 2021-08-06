@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Radius;
 
-
+use Symfony\Component\Process\Exception\ProcessFailedException;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Nas;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\Process\Process;
 
 class NasController extends Controller
 {
@@ -47,7 +48,16 @@ class NasController extends Controller
             'secret' => $request->secret,
             'description' => $request->description,
         ]);
+        // TENTAR DEPOIS
+        // if($nas){
+        //     $process = new Process(['/usr/bin/freeradius_restart.sh']);
+        //     $process->run(); 
+        //     if (!$process->isSuccessful()) {
+        //         throw new ProcessFailedException($process);
+        //     }
             
+        //     echo $process->getOutput();         
+        // }
         return redirect('nas')->with('success', 'Routeboard cadastrada com sucesso!');
     }         
             

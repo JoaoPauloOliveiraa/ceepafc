@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRadpostauthTable extends Migration
+class CreateUsersTokenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateRadpostauthTable extends Migration
      */
     public function up()
     {
-        Schema::create('radpostauth', function (Blueprint $table) {
+        Schema::create('users_token', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->string('user', 64)->default('');
-            $table->string('pass', 64)->default('');
-            $table->string('reply', 32)->default('');
-            $table->timestamp('date');
+            $table->integer('users_token_id')->index('users_token_id');
+            $table->string('hash', 32)->nullable();
+            $table->boolean('used')->nullable()->default(0);
+            $table->dateTime('expired_in');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateRadpostauthTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('radpostauth');
+        Schema::dropIfExists('users_token');
     }
 }

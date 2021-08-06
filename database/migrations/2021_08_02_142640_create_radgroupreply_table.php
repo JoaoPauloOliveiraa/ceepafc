@@ -15,10 +15,10 @@ class CreateRadgroupreplyTable extends Migration
     {
         Schema::create('radgroupreply', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('GroupName', 64)->default('')->index('GroupName');
-            $table->string('Attribute', 32)->default('');
+            $table->string('groupname', 64)->default('')->index('groupname');
+            $table->string('attribute', 64)->default('');
             $table->char('op', 2)->default('=');
-            $table->string('Value', 253)->default('');
+            $table->string('value', 253)->default('');
         });
     }
 

@@ -17,8 +17,8 @@
                         <div class="card-header-actions">
                         </div>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-bordered table-responsive table-hover">
+                    <div class="card-body col-sm-12">
+                        <table class="table table-bordered">
                              <tbody>
                                 <tr>
                                     <th style="">Nome:</th>
@@ -42,11 +42,7 @@
                                 </tr>                   
                                 <tr>
                                     <th style="">Grupo</th>
-                                    <td>
-                                        <select class="form-control">
-                                            <option value="V">Visitantes</option>
-                                        </select>
-                                    </td>
+                                    <td>{{$group->groupname}}</td>
                                 </tr>
 
                             </tbody>

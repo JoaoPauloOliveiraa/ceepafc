@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRadusergroupTable extends Migration
+class AddForeignKeysToRadchekTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateRadusergroupTable extends Migration
      */
     public function up()
     {
-        Schema::create('radusergroup', function (Blueprint $table) {
-            $table->string('UserName', 64)->default('')->index('UserName');
-            $table->string('GroupName', 64)->default('');
-            $table->integer('priority')->default(1);
+        Schema::table('radchek', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -27,6 +25,8 @@ class CreateRadusergroupTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('radusergroup');
+        Schema::table('radchek', function (Blueprint $table) {
+            $table->dropForeign('user_id_user_id_foreign');
+        });
     }
 }

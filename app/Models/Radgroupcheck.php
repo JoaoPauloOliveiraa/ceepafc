@@ -12,4 +12,8 @@ class Radgroupcheck extends Model
     public $timestamps = false;
     use HasFactory;
   
+    
+    public function user(){
+        return $this->hasMany(User::class, 'radgroupcheck_id', 'id');
+    }
 }

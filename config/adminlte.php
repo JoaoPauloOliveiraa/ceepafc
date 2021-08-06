@@ -45,13 +45,12 @@ return [
     |
     */
 
-    'logo' => '<strong></strong>',
-    'logo_img' => 'img/logo.png', //'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
-    'logo_img_xl' => null,
-    'logo_img_xl_class' => 'brand-image-xs',
+    'logo' => '',
+    'logo_img' => '', //'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img_class' => '',//'brand-image img-circle elevation-3',
+    'logo_img_xl' => 'img/logo.png',
+    'logo_img_xl_class' => '',
     'logo_img_alt' => '',
-
     /*
     |--------------------------------------------------------------------------
     | User Menu
@@ -64,7 +63,7 @@ return [
     |
     */
 
-    'usermenu_enabled' => true,
+    'usermenu_enabled' => false,
     'usermenu_header' => false,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
@@ -225,14 +224,9 @@ return [
 
     'menu' => [
         [
-            'text' => 'Dashboard',
-            'url'  => 'dashboard',
-            'icon' => 'fas fa-fw fa-file',
-        ],
-         [
-            'text' => 'Administradores',
-            'url' => 'admins',
-            'can' => 'restrictRoot',
+            'text' => 'Usuários Conectados',
+            'url'  => 'users/online',
+            'icon' => 'fas fa-fw fa-wifi',
         ],
         [
             'header' => 'Hotspot'
@@ -241,38 +235,32 @@ return [
         [
             'text' => 'Usuários',
             'url'  => 'users',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-users',
         ],
         [
             'text' => 'groups',
             'url'  => 'groups',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-users-cog',
             'can' => 'restrictRoot',
         ],
         [
             'text' => 'Usuários Bloqueados',
             'url'  => 'users/blockeds',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-user-lock',
         ],
         [
             'text' => 'Routerboards',
             'url'  => 'nas',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-network-wired',
         ],
         [
             'header' => 'account_settings'
         ],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => 'admin/profile',
             'icon' => 'fas fa-fw fa-user',
-            'can' => 'restrictRoot',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-            'can' => 'restrictRoot',
+            
         ],
     ],
     /*

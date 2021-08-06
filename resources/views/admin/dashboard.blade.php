@@ -6,7 +6,7 @@
 <link href="/css/custom.css" rel="stylesheets">
 @stop
 @section('content_header')
-    <h1 class="m-0 text-dark"></h1>
+    <h1 class="m-0 text-dark"><strong>Usuários Conectados!</strong></h1>
 @stop
 
 @section('content')

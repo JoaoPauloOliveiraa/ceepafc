@@ -25,7 +25,7 @@
                             <div class="input mb-3">
                             <label>Nome do grupo</label>
                             <input type="text" name="name"  class="form-control col-6 {{ $errors->has('name') ? 'is-invalid' : '' }} " 
-                            value="{{$group->GroupName}}" disabled>
+                            value="{{$group->groupname}}" disabled>
                           
                         </div>
                         
@@ -102,7 +102,7 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                        <h5 class="modal-title">Tem certeza que deseja alterar o grupo {{$group->GroupName}}?</h5>
+                                        <h5 class="modal-title">Tem certeza que deseja alterar o grupo {{$group->groupname}}?</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                           <span aria-hidden="true">&times;</span>
                                         </button>

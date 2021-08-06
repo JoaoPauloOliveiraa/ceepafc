@@ -58,10 +58,18 @@ Route::middleware('auth')->group(function(){
     Route::get('nas/register/{id}', [NasController::class, 'remove'])->name('removeNas');
     
     Route::get('users', [UserController::class, 'index'])->name('users');
+    Route::get('users/online', [UserController::class, 'online'])->name('online');
     Route::get('users/blockeds', [UserController::class, 'showBlockeds'])->name('blockeds');
     Route::get('users/block/{id}', [UserController::class, 'block'])->name('block');
     Route::get('user/historic/{id}', [UserController::class, 'historic'])->name('historic');
     Route::get('user/show/{id}', [UserController::class, 'show'])->name('show');
+    Route::get('user/approve/{id}', [UserController::class, 'approveUser'])->name('approve');
+    Route::put('user/approve/{id}', [UserController::class, 'updateApprove'])->name('updateApprove');
+
+    Route::get('admin/register', [UserController::class, 'newAdmin'])->name('registerAdmin');
+    Route::get('admin/profile', [UserController::class, 'profileAdmin'])->name('profileAdmin');
+    Route::put('admin/update/{id}', [UserController::class, 'updateAdmin'])->name('updateAdmin');
+
     Route::get('groups', [RadgroupreplyController::class, 'index'])->name('groups');
     Route::get('groups/register', [RadgroupreplyController::class, 'register'])->name('registerGroup');
     Route::post('groups/register', [RadgroupreplyController::class, 'create'])->name('createGroup');

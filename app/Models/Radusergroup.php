@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Radusergroup extends Model
 {
+    public $timestamps = false;
+    protected $table = 'radusergroup';
     use HasFactory;
 }

@@ -42,6 +42,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <a href="{{route('registerAdmin')}}" class="btn btn-sm btn-success">Novo Administrador</a>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
    
-    protected $table = 'user';  
+    protected $table = 'users';  
 
     
     protected $fillable = [
@@ -30,7 +30,6 @@ class User extends Authenticatable
    
     protected $hidden = [
         'password'
-        
     ];
 
     protected $casts = [
@@ -41,4 +40,14 @@ class User extends Authenticatable
     {
         return Carbon::parse($this->attributes["birth_date"])->age;
     }
+
+    public function group()
+    {
+        return $this->belongsTo(Radgroupcheck::class, 'radgroupcheck_id', 'id');
+    }
+
+    public function radcheck(){
+        return $this->hasOne(Radcheck::class, 'user_id', 'id');
+    }
+
 }

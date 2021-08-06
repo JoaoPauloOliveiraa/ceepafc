@@ -1,4 +1,4 @@
-@inject('layoutHelper', \JeroenNoten\LaravelAdminLte\Helpers\LayoutHelper)
+@inject('layoutHelper', '\JeroenNoten\LaravelAdminLte\Helpers\LayoutHelper')
 
 @php( $dashboard_url = View::getSection('dashboard_url') ?? config('adminlte.dashboard_url', 'home') )
 
@@ -12,17 +12,23 @@
     @if($layoutHelper->isLayoutTopnavEnabled())
         class="navbar-brand logo-switch {{ config('adminlte.classes_brand') }}"
     @else
-        class="brand-link logo-switch {{ config('adminlte.classes_brand') }}"
+        class="brand-link bg-white{{ config('adminlte.classes_brand') }}"
     @endif>
 
     {{-- Small brand logo --}}
-    <img src="{{ asset(config('adminlte.logo_img', 'vendor/adminlte/dist/img/AdminLTELogo.png')) }}"
+    <img src="{{ asset('img/logo50.png') }}"
          alt="{{ config('adminlte.logo_img_alt', 'AdminLTE') }}"
-         class="{{ config('adminlte.logo_img_class', 'brand-image-xl') }} logo-xs">
+         class="{{ config('adminlte.logo_img_class') }} logo-xs">
 
     {{-- Large brand logo --}}
-    <img src="{{ asset(config('adminlte.logo_img_xl')) }}"
+    <img src="{{ asset('img/logo.png') }}"
          alt="{{ config('adminlte.logo_img_alt', 'AdminLTE') }}"
-         class="{{ config('adminlte.logo_img_xl_class', 'brand-image-xs') }} logo-xl">
+         class="{{ config('adminlte.logo_img_class')}} logo-xl">
+         <br/>
+         <p class="name-user logo-xl">{{ Auth::user()->name }}</p>
+    {{-- <span class="brand-text font-weight-light {{ config('adminlte.classes_brand_text')}} logo-xl">
+        <br/>
+        <strong class="">{{ Auth::user()->name }}</strong>
+    </span> --}}
 
 </a>

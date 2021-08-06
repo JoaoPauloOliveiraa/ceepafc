@@ -45,12 +45,13 @@
                                 
                                 @foreach($groups as $key => $group)
                                 <tr>
-                                    <td>{{$group->GroupName}}</td>
+                                    <td>{{$group->groupname}}</td>
                                     <td>{{$group->value["download"]}}</td>
                                     <td>{{$group->value["upload"]}}</td>
                                     <td class="text-center">
+                                        @if ($group->groupname != 'Visitantes')
                                         <a href="{{route(('editGroup'), ['id' => $group->id])}}" class="btn btn-sm col-md-10 btn-primary">Editar</a>
-                                        <a href=""></a>
+                                        @endif   
                                     </td>
                                 </tr>
                                 @endforeach

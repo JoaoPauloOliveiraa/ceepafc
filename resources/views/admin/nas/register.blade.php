@@ -72,8 +72,6 @@
                                 <span class="">Cadastrar</span>
                            </button>
                            
-                           
-                            
                         </form>
                     </div>
                 </div>

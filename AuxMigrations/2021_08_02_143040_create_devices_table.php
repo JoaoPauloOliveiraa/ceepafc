@@ -15,14 +15,12 @@ class CreateDevicesTable extends Migration
     {
         Schema::create('devices', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->integer('user_devices_id');
+            $table->integer('user_devices_id')->index('devices_user_devices_id_foreign');
             $table->string('description')->nullable();
             $table->string('mac')->nullable();
             $table->integer('status')->nullable();
             $table->integer('mailnotified')->nullable();
         });
-
-        
     }
 
     /**

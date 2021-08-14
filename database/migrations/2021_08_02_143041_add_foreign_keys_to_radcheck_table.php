@@ -25,8 +25,5 @@ class AddForeignKeysToRadcheckTable extends Migration
      */
     public function down()
     {
-        Schema::table('radcheck', function (Blueprint $table) {
-            $table->dropForeign('user_user_id_foreign');
-        });
     }
 }

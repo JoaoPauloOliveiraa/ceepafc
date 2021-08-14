@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->boolean('admin')->default(0);
             $table->boolean('root')->default(0);
             $table->boolean('block')->default(0);
+            $table->string('remember_token', 100)->default('');
             $table->timestamps();
         });
     }

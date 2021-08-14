@@ -19,7 +19,7 @@ class RegisteredUserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('hotspot.register');
     }
@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
      */
     public function register(Request $request)
         {
-            
+           
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
@@ -63,10 +63,7 @@ class RegisteredUserController extends Controller
                 'password.confirmed' => 'Senhas não conferem!',
                 'password.regex' => 'A senha deve conter de 6 a 10 caracteres com pelo menos 1 letra e 1 número!',
             ]
-
             );
-
-            
             $user = new User;
             $user -> name = $request->name;
             $user -> email = $request->email;
@@ -89,10 +86,10 @@ class RegisteredUserController extends Controller
                 $radcheck = new Radcheck;
                 $radcheck -> user_id = $userId->id;
                 $radcheck -> username = $request->cpf;
-                $radcheck -> Attribute = "SHA2-Password";
-                $radcheck -> Value = hash('sha256', $request->password);            
-                $radcheck -> Save();
-                return redirect()->to("http://172.168.0.1")->send();
+                $radcheck -> attribute = "SHA2-Password";
+                $radcheck -> value = hash('sha256', $request->password);            
+                $radcheck -> save();
+                return redirect (route('hotspotLogin'));
                 }
             }
             else{

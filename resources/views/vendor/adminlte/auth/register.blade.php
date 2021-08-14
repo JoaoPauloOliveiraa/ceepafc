@@ -106,7 +106,7 @@
 
 @section('auth_footer')
     <p class="my-0">
-        <a href="http://172.168.0.1">
+        <a href="{{ route('hotspotLogin') }}">
             {{ __('adminlte::adminlte.i_already_have_a_membership') }}
         </a>
     </p>

@@ -42,7 +42,9 @@ Route::get('/', [HotspotController::class, 'index'])->middleware('guest');
 // });
 
 // Route::get('/401', [AuthController::class, 'unauthorized'])->name('login');  
-Route::get('/hotspot', [HotspotController::class, 'index']);
+Route::get('/hotspot', [HotspotController::class, 'index'])->name('hotspot');
+Route::get('/hotspot/redirect', [HotspotController::class, 'redirectToLogin'])->name('redirectToLogin');
+Route::get('/hotspot/login', [HotspotController::class, 'login'])->name('hotspotLogin');
 
 // Route::post('login', [AuthController::class, 'index']);
 // Route::post('login', [AuthController::class, 'login']);

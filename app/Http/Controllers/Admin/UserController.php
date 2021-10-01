@@ -28,8 +28,8 @@ class UserController extends Controller
     }
 
     public function online(){
-        $online = Radacct::where('acctstoptime', 0);
-        dd($online);
+        $online = Radacct::where('acctstoptime', null)->get();
+
     }
 
     public function showAdmins(){

@@ -14,7 +14,7 @@
         <div class="alert alert-success" role="alert">
             {{ session('success') }}
         </div>
-        <p>Clique no link abaixo para ser redirecionado.</p>
+        <p>Clique no link abaixo para ser redirecionado para àrea de login.</p>
             <a href="{{ route('hotspotLogin') }}">Login</a>
         @else
             @php

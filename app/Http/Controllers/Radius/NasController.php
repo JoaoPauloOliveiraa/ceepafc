@@ -7,7 +7,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Nas;
 use Illuminate\Support\Facades\DB;
+use RouterOS\Client;
+
 use Symfony\Component\Process\Process;
+
+
 
 class NasController extends Controller
 {
@@ -60,14 +64,22 @@ class NasController extends Controller
         // }
         return redirect('nas')->with('success', 'Routeboard cadastrada com sucesso!');
     }         
-            
              
-      
-    
     public function remove($id){
         
         Nas::destroy($id);
         
          return redirect('nas')->with('deleted', 'Routeboard excluída com sucesso!');
     }
+
+    public function routerboard(){
+        $client = new Client([
+            'host' => env('MK_HOST'),
+            'user' => env('MK_USER'),
+            'pass' => env('MK_PASS'),
+            'port' => env('MK_PORT'),
+        ]);
+    }
+
+    
 }
